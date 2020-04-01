@@ -147,7 +147,7 @@ public class ModuleManager :NSObject, UIApplicationDelegate {
     }
     
     
-    public func servicesForProtocol(_ serviceProtocol:Protocol) -> [ServiceProtocol]{
+    public func servicesForProtocol(_ serviceProtocol:Protocol) -> [ServiceProtocol]?{
         var services:[ServiceProtocol] = []
         let key = NSStringFromProtocol(serviceProtocol)
         guard let object = serviceClassDict[key] else{

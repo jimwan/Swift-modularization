@@ -23,9 +23,9 @@ public class ModuleClassB: NSObject,ModuleProtocol {
     public func applicationDidFinishLaunching(_ application: UIApplication) {
         print("ModuleClassB applicationDidFinishLaunching")
         
-        let instanceList:[ModuleAService] = ModuleManager.sharedInstance.servicesForProtocol(ModuleAService.self) as! [ModuleAService]
-        let instance:ModuleAService = instanceList.first!
-        instance.majorFunctionInModuleA()
-       
+        let instanceList:[ModuleAService]? = ModuleManager.sharedInstance.servicesForProtocol(ModuleAService.self) as? [ModuleAService]
+        if let instance:ModuleAService = instanceList?.first {
+            instance.majorFunctionInModuleA()
+        }
     }
 }
