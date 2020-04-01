@@ -13,17 +13,13 @@ import UIKit
 }
 
 @objc public protocol ServiceProtocol{
-    
+    var singleton:Bool { get set }
 }
 
 struct ModuleContext {
     var moduleName:String?
     var moduleClass:AnyClass?
     var modueleObject:ModuleProtocol?
-}
-
-func keyForProtocol<P>(aProtocol: P.Type) -> String {
-    return ("\(aProtocol)")
 }
 
 public class ModuleManager :NSObject, UIApplicationDelegate {
@@ -43,6 +39,7 @@ public class ModuleManager :NSObject, UIApplicationDelegate {
         return instance
     }()
     
+    //MARK: - Private -
     private func registerAllModules(){
         if let url = Bundle.main.url(forResource: "ModuleList", withExtension: "plist") {
             if let contents = NSDictionary(contentsOf: url) as? [String:String] {
@@ -63,7 +60,7 @@ public class ModuleManager :NSObject, UIApplicationDelegate {
         }
     }
     
-    func registerModule(_ moduleName:String){
+    private func registerModule(_ moduleName:String){
         guard let moduleClass:AnyClass = NSClassFromString(moduleName) else{return}
         var moduleContext:ModuleContext = ModuleContext()
         moduleContext.moduleClass = moduleClass
@@ -75,7 +72,7 @@ public class ModuleManager :NSObject, UIApplicationDelegate {
         moduleContextArray.append(moduleContext)
     }
     
-    func registerService(_ serviceName:String){
+    private func registerService(_ serviceName:String){
         guard let serviceClass:AnyClass = NSClassFromString(serviceName) else{
             return
         }
@@ -94,14 +91,7 @@ public class ModuleManager :NSObject, UIApplicationDelegate {
         }
     }
     
-    public func moduleFor(name:String) -> ModuleProtocol?{
-        for context in moduleContextArray {
-            if context.moduleName == name {
-                return context.modueleObject
-            }
-        }
-        return nil
-    }
+
     
     private func setServiceClass(_ serviceClass:AnyClass, forProtocol serviceProtocol:Protocol){
         let key = NSStringFromProtocol(serviceProtocol)
@@ -146,6 +136,15 @@ public class ModuleManager :NSObject, UIApplicationDelegate {
         return serviceProtocolList
     }
     
+    //MARK: - Public -
+    public func moduleFor(name:String) -> ModuleProtocol?{
+        for context in moduleContextArray {
+            if context.moduleName == name {
+                return context.modueleObject
+            }
+        }
+        return nil
+    }
     
     public func servicesForProtocol(_ serviceProtocol:Protocol) -> [ServiceProtocol]?{
         var services:[ServiceProtocol] = []
@@ -159,7 +158,7 @@ public class ModuleManager :NSObject, UIApplicationDelegate {
                 let serviceClassKey = NSStringFromClass(serviceClass)
                 let service:ServiceProtocol? = serviceDict[serviceClassKey] as? ServiceProtocol
                 if service == nil {
-                    if let s:ServiceProtocol = (serviceClass as! NSObject.Type).init() as? ServiceProtocol {
+                    if let s:ServiceProtocol = (serviceClass as! NSObject.Type).init() as? ServiceProtocol, s.singleton {
                         serviceDict[serviceClassKey] = s
                         services.append(s)
                     }
@@ -170,6 +169,7 @@ public class ModuleManager :NSObject, UIApplicationDelegate {
         return services
     }
     
+    //MARK: - UIApplicationDelegate -
     public func applicationDidFinishLaunching(_ application: UIApplication) {
         for context in moduleContextArray {
             if (context.modueleObject?.responds(to: #selector(applicationDidFinishLaunching(_:))))!{

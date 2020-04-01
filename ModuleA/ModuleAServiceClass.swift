@@ -11,6 +11,7 @@ import ModuleAService
 import ModuleManger
 
 public class ModuleAServiceClass: NSObject,ModuleAService  {
+    public var singleton: Bool = true
     
     public func majorFunctionInModuleA() {
         let moduleA = ModuleClassA()
