@@ -10,21 +10,21 @@ import UIKit
 import ModuleManger
 import ModuleAService
 
-public class ModuleClassB: NSObject,ModuleProtocol {
+public class ModuleBDelegate: NSObject,ModuleProtocol {
     
     override init() {
         super.init()
     }
     
     public static func create() -> ModuleProtocol? {
-        return ModuleClassB.init()
+        return ModuleBDelegate.init()
     }
 
     public func applicationDidFinishLaunching(_ application: UIApplication) {
-        print("ModuleClassB applicationDidFinishLaunching")
+        print("ModuleBDelegate applicationDidFinishLaunching")
         
-        let instanceList:[ModuleAService]? = ModuleManager.sharedInstance.servicesForProtocol(ModuleAService.self) as? [ModuleAService]
-        if let instance:ModuleAService = instanceList?.first {
+        let instanceList:[ModuleAServiceProtocol]? = ModuleManager.sharedInstance.servicesForProtocol(ModuleAServiceProtocol.self) as? [ModuleAServiceProtocol]
+        if let instance:ModuleAServiceProtocol = instanceList?.first {
             instance.majorFunctionInModuleA()
         }
     }

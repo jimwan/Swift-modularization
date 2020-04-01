@@ -3,6 +3,8 @@
 <plist version="1.0">
 <dict>
 	<key>ModuleA</key>
-	<string>ModuleAServiceClass</string>
+	<array>
+		<string>ModuleAServiceManager</string>
+	</array>
 </dict>
 </plist>

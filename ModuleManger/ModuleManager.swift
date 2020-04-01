@@ -42,9 +42,11 @@ public class ModuleManager :NSObject, UIApplicationDelegate {
     //MARK: - Private -
     private func registerAllModules(){
         if let url = Bundle.main.url(forResource: "ModuleList", withExtension: "plist") {
-            if let contents = NSDictionary(contentsOf: url) as? [String:String] {
-                for (key,value) in contents {
-                    registerModule("\(key).\(value)")
+            if let contents = NSDictionary(contentsOf: url) as? [String:[String]] {
+                for (moduleName,classNames) in contents {
+                    for className in classNames {
+                        registerModule("\(moduleName).\(className)")
+                    }
                 }
               }
         }
@@ -52,9 +54,11 @@ public class ModuleManager :NSObject, UIApplicationDelegate {
     
     private func registerAllServices(){
         if let url = Bundle.main.url(forResource: "ServiceList", withExtension: "plist") {
-            if let contents = NSDictionary(contentsOf: url) as? [String:String] {
-                for (key,value) in contents {
-                    registerService("\(key).\(value)")
+            if let contents = NSDictionary(contentsOf: url) as? [String:[String]] {
+                for (moduleName,classNames) in contents {
+                    for className in classNames {
+                        registerService("\(moduleName).\(className)")
+                    }
                 }
             }
         }

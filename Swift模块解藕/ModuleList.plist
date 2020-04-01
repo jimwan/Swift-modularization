@@ -3,8 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>ModuleB</key>
-	<string>ModuleClassB</string>
+	<array>
+		<string>ModuleBDelegate</string>
+	</array>
 	<key>ModuleA</key>
-	<string>ModuleClassA</string>
+	<array>
+		<string>ModuleADelegate</string>
+	</array>
 </dict>
 </plist>

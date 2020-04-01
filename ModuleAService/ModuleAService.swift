@@ -9,6 +9,6 @@
 import UIKit
 import ModuleManger
 
-@objc public protocol ModuleAService : ServiceProtocol {
+@objc public protocol ModuleAServiceProtocol : ServiceProtocol {
     func majorFunctionInModuleA()
 }

@@ -10,11 +10,11 @@ import UIKit
 import ModuleAService
 import ModuleManger
 
-public class ModuleAServiceClass: NSObject,ModuleAService  {
+public class ModuleAServiceManager: NSObject,ModuleAServiceProtocol  {
     public var singleton: Bool = true
     
     public func majorFunctionInModuleA() {
-        let moduleA = ModuleClassA()
+        let moduleA = ModuleADelegate()
         moduleA.majorFunctionInModuleA()
     }
     

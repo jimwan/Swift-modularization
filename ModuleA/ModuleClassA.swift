@@ -10,18 +10,18 @@ import UIKit
 import ModuleManger
 
 
-public class ModuleClassA: NSObject,ModuleProtocol{
+public class ModuleADelegate: NSObject,ModuleProtocol{
 
     public static func create() -> ModuleProtocol? {
-        return ModuleClassA()
+        return ModuleADelegate()
     }
 
     public func applicationDidFinishLaunching(_ application: UIApplication) {
-        print("ModuleClassA applicationDidFinishLaunching")
+        print("ModuleADelegate applicationDidFinishLaunching")
     }
     
     func majorFunctionInModuleA() {
-        print("ModuleClassA majorFunctionInModuleA")
+        print("ModuleADelegate majorFunctionInModuleA")
     }
 
 }
