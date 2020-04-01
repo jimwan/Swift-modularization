@@ -8,6 +8,13 @@
 
 import UIKit
 
+// app 入口函数
+public func ModuleManagerApplicationMain(_ argc: Int32, _ argv: UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>!, _ principalClassName: String?, _ delegateClassName: String?) -> Int32 {
+    
+    ModuleManager.sharedInstance.setup()
+    return UIApplicationMain(argc,argv,principalClassName,delegateClassName)
+}
+
 @objc public protocol ModuleProtocol:UIApplicationDelegate {
    static func create() -> ModuleProtocol?
 }
@@ -30,14 +37,15 @@ public class ModuleManager :NSObject, UIApplicationDelegate {
     
     public static let sharedInstance: ModuleManager = {
         let instance = ModuleManager()
-        // setup code
-        
-        instance.registerAllModules()
-        instance.registerAllServices()
-
-//        print(instance.serviceClassDict)
         return instance
     }()
+    
+    // MARK: - fileprivate -
+    fileprivate func setup(){
+        ModuleManager.sharedInstance.registerAllModules()
+        ModuleManager.sharedInstance.registerAllServices()
+    }
+    
     
     //MARK: - Private -
     private func registerAllModules(){

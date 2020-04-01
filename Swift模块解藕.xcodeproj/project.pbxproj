@@ -22,6 +22,7 @@
 		BC68C25E2433373600467E62 /* ModuleManger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BC68C2562433373600467E62 /* ModuleManger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC68C2632433374000467E62 /* ModuleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC68C2622433374000467E62 /* ModuleManager.swift */; };
 		BC68C2792434301F00467E62 /* ModuleList.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC68C27724342E2B00467E62 /* ModuleList.plist */; };
+		BC7EB2262434A9B2000C17B3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7EB2252434A9B2000C17B3 /* main.swift */; };
 		BCF1BB3F24346CEB006982BA /* ModuleB.h in Headers */ = {isa = PBXBuildFile; fileRef = BCF1BB3D24346CEB006982BA /* ModuleB.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCF1BB4224346CEB006982BA /* ModuleB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCF1BB3B24346CEB006982BA /* ModuleB.framework */; };
 		BCF1BB4324346CEB006982BA /* ModuleB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BCF1BB3B24346CEB006982BA /* ModuleB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -100,6 +101,7 @@
 		BC68C2592433373600467E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC68C2622433374000467E62 /* ModuleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleManager.swift; sourceTree = "<group>"; };
 		BC68C27724342E2B00467E62 /* ModuleList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ModuleList.plist; sourceTree = "<group>"; };
+		BC7EB2252434A9B2000C17B3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		BCF1BB3B24346CEB006982BA /* ModuleB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ModuleB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCF1BB3D24346CEB006982BA /* ModuleB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModuleB.h; sourceTree = "<group>"; };
 		BCF1BB3E24346CEB006982BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				BC68C213243333AF00467E62 /* Info.plist */,
 				BC68C27724342E2B00467E62 /* ModuleList.plist */,
 				BCF1BB5E24347979006982BA /* ServiceList.plist */,
+				BC7EB2252434A9B2000C17B3 /* main.swift */,
 			);
 			path = "Swift模块解藕";
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 			files = (
 				BC68C20A243333AE00467E62 /* ViewController.swift in Sources */,
 				BC68C206243333AE00467E62 /* AppDelegate.swift in Sources */,
+				BC7EB2262434A9B2000C17B3 /* main.swift in Sources */,
 				BC68C208243333AE00467E62 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
